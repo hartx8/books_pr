@@ -1,7 +1,7 @@
 
-class Books
+class BooksStore
   attr_reader :books
-  def make_operation(operation)
+  def initialize
     @books = {
       TestBook1: { author: "Artur Simonov",
                    cost: 500,
@@ -10,6 +10,9 @@ class Books
                    cost: 499,
                    rating: 3 }
     }
+  end
+
+  def make_operation(operation)
     case operation
     when "delete"
       puts "Which book you prefer to delete?"
@@ -38,6 +41,8 @@ class Books
       end
     end
   end
+
+  private
 
   def add
     puts "Hi! Now you are adding new book. Folow the instruction below."
@@ -111,8 +116,6 @@ class Books
   end
 end
 
-
 puts "Hi! Your are in my BookStore app. Here your can do:  add, delete, sort, edit, show_(all/best/worst)"
 operation = gets.chomp
-test_me = Books.new
-test_me.make_operation(operation)
+BooksStore.new.make_operation(operation)
