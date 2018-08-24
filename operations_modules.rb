@@ -22,7 +22,7 @@ module Operations
             end
           end
         end
-        BooksStore.new.add_new(book_name, book_info)
+        store.add_new(book_name, book_info)
       end
     end
   end
@@ -41,7 +41,7 @@ module Operations
       book_info[:author] = book_author
       book_info[:cost] = book_cost.to_i
       book_info[:rating] = book_rating.to_i
-      BooksStore.new.add_new(book_name, book_info)
+      store.add_new(book_name, book_info)
     end
   end
 
@@ -86,10 +86,6 @@ module Operations
         print_out(book_name, book_info)
       end
     end
-  end
-
-  def delete_book(book_name)
-     BooksStore.new.delete_book(book_name)
   end
 
   def print_out(book_name, book_info)

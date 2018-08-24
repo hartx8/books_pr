@@ -3,9 +3,10 @@ require "./books_store.rb"
 require "./operations_modules.rb"
 class BooksOperations
   include Operations
-  attr_reader :books
+  attr_reader :books , :store
   def initialize
-    @books = BooksStore.new.books_storage
+    @store = BooksStore.new
+    @books = @store.books_storage
   end
 
   def make_operation(operation)
@@ -13,7 +14,7 @@ class BooksOperations
     when "delete"
       puts "Which book you prefer to delete?"
       book_name = gets.chomp
-      delete_book(book_name)
+      store.delete_book(book_name)
     when "add"
       add
     when "edit"
