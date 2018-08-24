@@ -27,7 +27,6 @@ module Operations
     end
   end
 
-# Loh2
 
   def add
     puts "Hi! Now you are adding new book. Folow the instruction below."
