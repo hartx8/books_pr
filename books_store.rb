@@ -8,16 +8,20 @@ class BooksStore
 
   def add_new(book_name, book_info)
     storage[book_name]= book_info
-    File.open("./storage.yml", "w") {|file| file.write(storage.to_yaml)}
+    write_to_file
   end
 
   def delete_book(book_name)
-    if  storage[book_name] != nil
+    if storage[book_name] != nil
       storage.delete(book_name)
-      File.open("./storage.yml", "w") {|file| file.write(storage.to_yaml)}
+      write_to_file
     else
       puts "Book does not exist"
     end
+  end
+
+  def write_to_file
+    File.open("./storage.yml", "w") {|file| file.write(storage.to_yaml)}
   end
 
    def books_storage
