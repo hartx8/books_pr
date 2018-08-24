@@ -1,9 +1,5 @@
 require "yaml"
 class BooksStore
-  def initialize(book_name= nil, book_info= nil)
-    @book_name = book_name
-    @book_info = book_info
-  end
 
   def add_new(book_name, book_info)
     storage = YAML.load_file("./storage.yml")
