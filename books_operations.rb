@@ -3,7 +3,7 @@ require "./books_store.rb"
 require "./operations_modules.rb"
 class BooksOperations
   include Operations
-  attr_reader :books , :store
+  attr_reader :books, :store
   def initialize
     @store = BooksStore.new
     @books = @store.books_storage
@@ -26,15 +26,7 @@ class BooksOperations
     when "show_worst"
       show_worst
     when "sort"
-      puts "Your can sort by: author and cost. Which you choose? "
-      choose = gets.chomp
-      if choose == "author"
-        sort_by_author
-      elsif choose == "cost"
-        sort_by_cost
-      else
-        puts "Try maybe something else!"
-      end
+      sort
     end
   end
 end

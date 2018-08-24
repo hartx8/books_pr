@@ -47,7 +47,20 @@ module Operations
     end
   end
 
+  def sort
+    puts "Your can sort by: author and cost. Which you choose? "
+    choose = gets.chomp
+    if choose == "author"
+      sort_by_author
+    elsif choose == "cost"
+      sort_by_cost
+    else
+      puts "Try maybe something else!"
+    end
+  end
+
   def sort_by_author
+    puts "Author name:"
     author = gets.chomp
     books.each do |book_name, book_info|
       if book_info[:author] == author
@@ -89,6 +102,7 @@ module Operations
       end
     end
   end
+
 
   def print_out(book_name, book_info)
     puts "Title: #{book_name}, Author: #{book_info[:author]}, Cost: #{book_info[:cost]}$, Rating: #{book_info[:rating]}/10"
