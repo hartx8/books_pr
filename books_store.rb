@@ -1,5 +1,5 @@
 require "yaml"
-class Books
+class BooksStore
   def initialize(book_name= nil, book_info= nil)
     @book_name = book_name
     @book_info = book_info

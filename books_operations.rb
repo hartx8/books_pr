@@ -1,11 +1,11 @@
 require "yaml"
 require "./books_store.rb"
 require "./operations_modules.rb"
-class BooksStore
+class BooksOperations
   include Operations
   attr_reader :books
   def initialize
-    @books = Books.new.books_storage
+    @books = BooksStore.new.books_storage
   end
 
   def make_operation(operation)
@@ -39,4 +39,4 @@ class BooksStore
 end
 puts "Hi! Your are in my BookStore app. Here your can do:  add, delete, sort, edit, show_(all/best/worst)"
 operation = gets.chomp
-BooksStore.new.make_operation(operation)
+BooksOperations.new.make_operation(operation)
