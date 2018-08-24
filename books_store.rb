@@ -28,5 +28,3 @@ class BooksStore
      storage
   end
 end
-
-#Books.new.add_new("")
