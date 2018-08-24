@@ -1,14 +1,17 @@
 require "yaml"
 class BooksStore
 
+  attr_reader :storage
+  def initialize
+    @storage = YAML.load_file("./storage.yml")
+  end
+
   def add_new(book_name, book_info)
-    storage = YAML.load_file("./storage.yml")
     storage[book_name]= book_info
     File.open("./storage.yml", "w") {|file| file.write(storage.to_yaml)}
   end
 
   def delete_book(book_name)
-    storage = YAML.load_file("./storage.yml")
     if  storage[book_name] != nil
       storage.delete(book_name)
       File.open("./storage.yml", "w") {|file| file.write(storage.to_yaml)}
@@ -18,7 +21,7 @@ class BooksStore
   end
 
    def books_storage
-     YAML.load_file("./storage.yml")
+     storage
   end
 end
 
