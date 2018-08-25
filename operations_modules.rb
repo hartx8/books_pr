@@ -1,31 +1,44 @@
 module Operations
   def edit_book # NOT READY
     puts "Which book you need to edit?"
-    book_name_to_edit = gets.chomp
-    books.each do |book_name, book_info|
-      if book_name == book_name_to_edit
-        puts "If you good with param that your see, just skip(enter)"
-        puts "Book title #{book_name}, new: "
-        new_book_name = gets.chomp
-        puts "Book Author is #{book_info[:author]}, new: "
-        new_book_author = gets.chomp
-        puts "Book cost is #{book_info[:cost]}, new: "
-        new_book_cost = gets.chomp
-        puts "Book rating is #{book_info[:rating]}, new: "
-        new_book_rating = gets.chomp
-        if !new_book_author.nil?
-          book_info[:author] = new_book_author
-          if !new_book_cost.nil?
-            book_info[:cost] = new_book_cost.to_i
-            if !new_book_rating.nil?
-              book_info[:rating] = new_book_rating.to_i
-            end
-          end
-        end
-        store.add_new(book_name, book_info)
-      end
+    book_name = gets.chomp
+    if books[book_name] != nil
+      book_info = books[book_name]
+      print_out(book_name, book_info)
+      puts "What your want to change: author, cost, rating or name?"
+      choise = gets.chomp
+      edit_choose(choise, book_name)
+    else
+      puts "Book does not exist"
     end
   end
+
+  def edit_choose(choise, book_name)
+  book_info = books[book_name]
+    case choise
+      when "author"
+        puts "New Author: " ; book_author = gets.chomp
+        book_info[:author] = book_author
+        edit_make_changes(book_name, book_info)
+      when "cost"
+        puts "New Cost: " ; book_cost = gets.chomp
+        book_info[:cost] = book_cost.to_i
+        edit_make_changes(book_name, book_info)
+      when "rating"
+        puts "New Rating: !" ; book_rating = gets.chomp
+        book_info[:rating] = book_rating.to_i
+        edit_make_changes(book_name, book_info)
+      when "name"
+        puts "New Book Name: " ; book_name_new = gets.chomp
+        store.delete_book(book_name)
+        edit_make_changes(book_name_new, book_info)
+      end
+  end
+
+  def edit_make_changes(book_name, book_info)
+    store.add_new(book_name, book_info)
+  end
+
 
 
   def add

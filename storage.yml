@@ -1,9 +1,13 @@
 ---
-mfskldf:
-  :author: fsdm
-  :cost: 400
-  :rating: 10
 Roman Petrov:
   :author: '90'
   :cost: 0
+  :rating: 0
+Semen:
+  :author: Benito
+  :cost: 400
+  :rating: 7
+Armen Big Gun:
+  :author: Benito
+  :cost: 600
   :rating: 0
